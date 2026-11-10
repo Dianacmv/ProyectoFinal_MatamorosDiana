@@ -1,0 +1,49 @@
+@model ProyectoFinal_MatamorosDiana.Models.Carrera
+
+@{
+    ViewData["Title"] = "Eliminar carrera";
+}
+
+<div class="container mt-4">
+    <h2>Eliminar carrera</h2>
+
+    <div class="alert alert-warning">
+        ¿Está segura de que desea eliminar esta carrera?
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            Nombre de la carrera
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Model.Nombre
+                        </dd>
+
+                        <dt class="col-sm-4">
+                            Descripción
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Model.Descripcion
+                        </dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <button type="submit" class="btn btn-danger">
+                            Confirmar eliminación
+                        </button>
+
+                        <a asp-action="Index" class="btn btn-secondary">
+                            Cancelar
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
