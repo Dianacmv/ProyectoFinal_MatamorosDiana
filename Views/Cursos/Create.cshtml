@@ -1,0 +1,74 @@
+@model ProyectoFinal_MatamorosDiana.Models.Curso
+
+@{
+    ViewData["Title"] = "Agregar curso";
+}
+
+<div class="container mt-4">
+    <h2>Agregar curso</h2>
+    <p>Complete la información del nuevo curso universitario.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Codigo" class="form-label"></label>
+                    <input asp-for="Codigo" class="form-control" />
+                    <span asp-validation-for="Codigo"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Nombre" class="form-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Creditos" class="form-label"></label>
+                    <input asp-for="Creditos" class="form-control" />
+                    <span asp-validation-for="Creditos"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Horario" class="form-label"></label>
+                    <input asp-for="Horario" class="form-control" />
+                    <span asp-validation-for="Horario"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="CarreraId" class="form-label"></label>
+                    <select asp-for="CarreraId"
+                            class="form-select"
+                            asp-items="ViewBag.CarreraId">
+                        <option value="">Seleccione una carrera</option>
+                    </select>
+                    <span asp-validation-for="CarreraId"
+                          class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Guardar curso
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Volver al listado
+                </a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,50 @@
+@model ProyectoFinal_MatamorosDiana.Models.Carrera
+
+@{
+    ViewData["Title"] = "Editar carrera";
+}
+
+<div class="container mt-4">
+    <h2>Editar carrera</h2>
+    <p>Modifique la información de la carrera seleccionada.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Nombre" class="form-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Descripcion" class="form-label"></label>
+                    <textarea asp-for="Descripcion"
+                              class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Descripcion"
+                          class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Guardar cambios
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Volver al listado
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
