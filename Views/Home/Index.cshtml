@@ -1,8 +1,65 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1>Sistema de Matrícula Universitaria</h1>
+        <p class="lead">
+            Bienvenido al sistema de matrícula universitaria.
+            Desde aquí puede consultar las carreras disponibles
+            y acceder a las funciones del sistema.
+        </p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-5 mb-3">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h4>Carreras universitarias</h4>
+                    <p>
+                        Consulte las carreras disponibles
+                        en la universidad.
+                    </p>
+                    <a asp-controller="Carreras"
+                       asp-action="Index"
+                       class="btn btn-primary">
+                        Ver carreras
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        @if (User.IsInRole("Administrador"))
+        {
+            <div class="col-md-5 mb-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4>Administración de cursos</h4>
+                        <p>
+                            Registre, consulte y administre
+                            los cursos universitarios.
+                        </p>
+                        <a asp-controller="Cursos"
+                           asp-action="Index"
+                           class="btn btn-primary">
+                            Gestionar cursos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!User.Identity!.IsAuthenticated)
+    {
+        <div class="text-center mt-4">
+            <p>Inicie sesión para acceder a su cuenta.</p>
+            <a asp-area="Identity"
+               asp-page="/Account/Login"
+               class="btn btn-success">
+                Iniciar sesión
+            </a>
+        </div>
+    }
 </div>
